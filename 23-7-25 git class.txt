@@ -1,0 +1,427 @@
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git branch
+* dev1_b1
+  dev2_b2
+  dev3_b3
+  main
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git ls-tree --name-only -r b1
+fatal: Not a valid object name b1
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git ls -tree --name-only -r dev_1_b1
+git: 'ls' is not a git command. See 'git --help'.
+
+The most similar command is
+        lfs
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git ls-tree --name-only -r dev_1_b1
+fatal: Not a valid object name dev_1_b1
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git ls-tree --name-only -r dev1_b1
+Demo.txt
+Demo2.txt
+Track.txt
+remote_repo.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git checkout main
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git branch
+  dev1_b1
+  dev2_b2
+  dev3_b3
+* main
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat Demo.txt
+welcome to git class.....
+version control with git
+line3
+line 4
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout dev1_b1
+M       Demo.txt
+Switched to branch 'dev1_b1'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git status
+On branch dev1_b1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Demo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ cat Demo.txt
+welcome to git class.....
+version control with git
+line3
+line 4
+line 5 modified by branch1-dev1
+line 6 modified by branch1-dev2
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git add Demo.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (dev1_b1)
+$ git checkout main
+M       Demo.txt
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat demo.txt
+welcome to git class.....
+version control with git
+line3
+line 4
+line 5 modified by branch1-dev1
+line 6 modified by branch1-dev2
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git add Track.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git commit -m "first line"
+[main f073ea5] first line
+ 2 files changed, 5 insertions(+)
+ create mode 100644 Track.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git log
+commit f073ea50d1182bded122f089f206a85daf275774 (HEAD -> main)
+Author: kotakuri sai kumar <kotakurisaikumar2004@gmail.com>
+Date:   Wed Jul 23 09:57:49 2025 +0530
+
+    first line
+
+commit b3bbebd255a475fac4d80d0a94f4322712ea597d (origin/main, origin/HEAD, dev3_b3, dev2_b2)
+Author: saikumarkotakuri <kotakurisaikumar2004@gmail.com>
+Date:   Tue Jul 22 10:04:09 2025 +0530
+
+    Create remote_repo.txt
+
+commit 5dde8f006c57948b2bcd2fc0cdf2dfdf87286129
+Author: kotakuri sai kumar <kotakurisaikumar2004@gmail.com>
+Date:   Tue Jul 22 09:30:53 2025 +0530
+
+    first commit
+
+commit 9f3450ec34ac64b256adc5d84142d52b0f8884a6
+Author: kotakuri sai kumar <kotakurisaikumar2004@gmail.com>
+Date:   Mon Jul 21 10:48:59 2025 +0530
+
+    updated few lines
+
+commit c50cafd4f86e0e1e9f750b5668a2f15641d0e45b
+Author: kotakuri sai kumar <kotakurisaikumar2004@gmail.com>
+Date:   Mon Jul 21 10:11:51 2025 +0530
+
+    first commit
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout f073ea50d1182bded122f089f206a85daf275774
+Note: switching to 'f073ea50d1182bded122f089f206a85daf275774'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at f073ea5 first line
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git ((f073ea5...))
+$ cat track.txt
+new git version 23-7-25
+line 2
+line 3
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git ((f073ea5...))
+$ git push origin dev1_b1
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 355 bytes | 118.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'dev1_b1' on GitHub by visiting:
+remote:      https://github.com/saikumarkotakuri/git_class_22-7-25/pull/new/dev1_b1
+remote:
+To https://github.com/saikumarkotakuri/git_class_22-7-25.git
+ * [new branch]      dev1_b1 -> dev1_b1
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git ((f073ea5...))
+$ git clone https://github.com/jsakshu7/git_30_JULY_WDM
+Cloning into 'git_30_JULY_WDM'...
+remote: Enumerating objects: 29, done.
+remote: Counting objects: 100% (29/29), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 29 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (29/29), 1.56 MiB | 885.00 KiB/s, done.
+Resolving deltas: 100% (4/4), done.
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git ((f073ea5...))
+$ git checkout main
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git branch
+  dev1_b1
+  dev2_b2
+  dev3_b3
+* main
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git commit -m "first commit by main branch"
+[main b4a8bd4] first commit by main branch
+ 1 file changed, 3 insertions(+)
+ create mode 100644 student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git branch -b new_branch
+error: unknown switch `b'
+usage: git branch [<options>] [-r | -a] [--merged] [--no-merged]
+   or: git branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]
+   or: git branch [<options>] [-l] [<pattern>...]
+   or: git branch [<options>] [-r] (-d | -D) <branch-name>...
+   or: git branch [<options>] (-m | -M) [<old-branch>] <new-branch>
+   or: git branch [<options>] (-c | -C) [<old-branch>] <new-branch>
+   or: git branch [<options>] [-r | -a] [--points-at]
+   or: git branch [<options>] [-r | -a] [--format]
+
+Generic options
+    -v, --[no-]verbose    show hash and subject, give twice for upstream branch
+    -q, --[no-]quiet      suppress informational messages
+    -t, --[no-]track[=(direct|inherit)]
+                          set branch tracking configuration
+    -u, --[no-]set-upstream-to <upstream>
+                          change the upstream info
+    --[no-]unset-upstream unset the upstream info
+    --[no-]color[=<when>] use colored output
+    -r, --remotes         act on remote-tracking branches
+    --contains <commit>   print only branches that contain the commit
+    --no-contains <commit>
+                          print only branches that don't contain the commit
+    --[no-]abbrev[=<n>]   use <n> digits to display object names
+
+Specific git-branch actions:
+    -a, --all             list both remote-tracking and local branches
+    -d, --[no-]delete     delete fully merged branch
+    -D                    delete branch (even if not merged)
+    -m, --[no-]move       move/rename a branch and its reflog
+    -M                    move/rename a branch, even if target exists
+    --[no-]omit-empty     do not output a newline after empty formatted refs
+    -c, --[no-]copy       copy a branch and its reflog
+    -C                    copy a branch, even if target exists
+    -l, --[no-]list       list branch names
+    --[no-]show-current   show current branch name
+    --[no-]create-reflog  create the branch's reflog
+    --[no-]edit-description
+                          edit the description for the branch
+    -f, --[no-]force      force creation, move/rename, deletion
+    --merged <commit>     print only branches that are merged
+    --no-merged <commit>  print only branches that are not merged
+    --[no-]column[=<style>]
+                          list branches in columns
+    --[no-]sort <key>     field name to sort on
+    --[no-]points-at <object>
+                          print only branches of the object
+    -i, --[no-]ignore-case
+                          sorting and filtering are case insensitive
+    --[no-]recurse-submodules
+                          recurse through submodules
+    --[no-]format <format>
+                          format to use for the output
+
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout new branch
+error: pathspec 'new' did not match any file(s) known to git
+error: pathspec 'branch' did not match any file(s) known to git
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git branch new_branch
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout new_branch
+Switched to branch 'new_branch'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git commit-m "modified by new branch"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit-tree
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+4
+5
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git branch
+  dev1_b1
+  dev2_b2
+  dev3_b3
+  main
+* new_branch
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git checkout main
+M       student.txt
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+4
+5
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git branch
+  dev1_b1
+  dev2_b2
+  dev3_b3
+* main
+  new_branch
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout new_branch
+M       student.txt
+Switched to branch 'new_branch'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git commit-m "modified by new branch"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit-tree
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git commit-m "modified by new branch_2"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit-tree
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git checkout main
+M       student.txt
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+4
+5
+
+
+---------------------
+-----------------
+------------------------
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ git checkout new_branch
+M       student.txt
+Switched to branch 'new_branch'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git status
+On branch new_branch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   student.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   student.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        git_30_JULY_WDM/
+
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git add student.txt
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git commit-m "third commit"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+        commit-tree
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git commit -m "third commit"
+[new_branch b9285ad] third commit
+ 1 file changed, 10 insertions(+)
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (new_branch)
+$ git checkout main
+Switched to branch 'main'
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$ cat student.txt
+1.sai
+2.ravi
+3.anil
+
+MY PC@DELL-VOSTRO MINGW64 /d/Git (main)
+$
